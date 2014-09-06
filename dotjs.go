@@ -1,18 +1,25 @@
 package main
 
 import (
-	//"fmt"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os/user"
 	"strings"
 )
 
+const (
+	debug = false
+)
+
 func Handler(w http.ResponseWriter, r *http.Request) {
 	url := r.URL.Path
 	url = strings.TrimSuffix(url, "/")
 	url = strings.TrimSuffix(url, "www.")
-	/*fmt.Println("Wanted: " + r.URL.Path)*/
+
+	if debug {
+		fmt.Println("Wanted: " + r.URL.Path)
+	}
 
 	usr, _ := user.Current()
 	dir := usr.HomeDir

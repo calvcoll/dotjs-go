@@ -1,0 +1,17 @@
+{
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "jquery.js", "dotjs.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "~/.js extension w/o tls",
+   "icons": {
+      "128": "icon128.png",
+      "48": "icon48.png"
+   },
+   "manifest_version": 2,
+   "name": "dotjs (no https)",
+   "permissions": [ "tabs" ],
+   "version": "2.0.1"
+}
