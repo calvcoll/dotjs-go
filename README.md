@@ -6,13 +6,13 @@ However it should work with the default extension (add link later)
 I consider this to be feature complete, but, you'll have to generate your own cert and key.
 
 ##Building
-'''bash
+```bash
 go get bitbucket.org/kardianos/osext
-'''
+```
 
-'''bash
+```bash
 go build
-'''
+```
 
 ##Cert and Key pair for SSL/TLS
 
@@ -21,8 +21,8 @@ go build
 **For example:** If djsd's executable is run in */home/calv/bin*, the keys will be put in */home/calv/bin/djsd_certs/*
 
 ###Creating a cert and key pair
-'''bash
+```bash
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
-'''
+```
 
 This will give you a cert (valid for 10 years) and key pair that you can use (I guess Unix only[?]).
