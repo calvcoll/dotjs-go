@@ -16,7 +16,7 @@ go build
 
 ##Cert and Key pair for SSL/TLS
 
-**Note: ** The keys will need to be put in the (executable's path)/djsd_certs/ folder.
+**Note:** The keys will need to be put in the (executable's path)/djsd_certs/ folder.
 
 **For example:** If djsd's executable is run in */home/calv/bin*, the keys will be put in */home/calv/bin/djsd_certs/*
 
