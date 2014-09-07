@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bitbucket.org/kardianos/osext"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -9,7 +10,7 @@ import (
 )
 
 const (
-	debug = false
+	Debug = false
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -17,7 +18,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	url = strings.TrimSuffix(url, "/")
 	url = strings.TrimSuffix(url, "www.")
 
-	if debug {
+	if Debug {
 		fmt.Println("Wanted: " + r.URL.Path)
 	}
 
@@ -37,6 +38,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	AppPath, _ := osext.ExecutableFolder()
+	CertificateFolder := AppPath + "djsd_certs/"
+
 	http.HandleFunc("/", Handler)
-	http.ListenAndServe(":3131", nil)
+	err := http.ListenAndServeTLS(":3131", CertificateFolder+"cert.pem", CertificateFolder+"key.pem", nil)
+	if err != nil {
+		http.ListenAndServe(":3131", nil)
+	}
 }
